@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Hello world</h1>
+<div class="row">
+    <div  th:if="${products.size > 0}">
+        <div>
+            <table class="table-responsive">
+                <thead>
+                <tr>
+                    <th scope="col" class="col-3">Product Name</th>
+                    <th scope="col"  class="col-3">Price</th>
+                    <th scope="col" class="col-3">Manufacturer</th>
+                    <th scope="col" class="col-3">Category</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="product : ${products}">
+                    <td th:text="${product.getName()}" style="font-family: Calibri"> </td>
+                    <td th:text="${product.getPrice()}" style="font-family: Calibri"> </td>
+                    <td th:text="${product.getManufacturer() != null}
+                            ?  ${product.getManufacturer().getName()}  : 'no manufecturer' " style="font-family: Calibri" ></td>
+                    <td th:text="${product.getCategory() != null } ? ${product.getCategory().getName()} : 'no category' "
+                        style="font-family: Calibri"></td>
+
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>
